@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//一覧画面の表示
+Route::get('/', 'DataController@showList')->name
+('datas');
