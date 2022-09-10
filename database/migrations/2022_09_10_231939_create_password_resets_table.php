@@ -1,10 +1,8 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
-class CreateDatasTable extends Migration
+class CreatePasswordResetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +11,12 @@ class CreateDatasTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('datas')) {
-        Schema::create('datas', function 
-        (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('title, 100');
-            $table->text('content');
-            $table->timestamps();
+        Schema::create('password_resets', function (Blueprint $table) {
+            $table->string('email')->index();
+            $table->string('token');
+            $table->timestamp('created_at')->nullable();
         });
-
-        }
     }
-
     /**
      * Reverse the migrations.
      *
@@ -32,6 +24,6 @@ class CreateDatasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('datas');
+        Schema::dropIfExists('password_resets');
     }
 }

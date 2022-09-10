@@ -14,3 +14,7 @@
 //一覧画面の表示
 Route::get('/', 'DataController@showList')->name
 ('datas');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
