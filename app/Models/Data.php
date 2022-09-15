@@ -14,5 +14,5 @@ class Data extends Model
     [
         'title',
         'content'
-    ]
+    ];
 }
