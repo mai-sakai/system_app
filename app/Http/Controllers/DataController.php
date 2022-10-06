@@ -12,6 +12,6 @@ class DataController extends Controller
     
     public function showList()
     {
-        return view('welcome');
+        return view('wlcome');
     }
 }
