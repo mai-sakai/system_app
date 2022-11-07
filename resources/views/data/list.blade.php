@@ -11,12 +11,14 @@
               <th>タイトル</th>
               <th></th>
           </tr>
+          @foreach($datas as $data)
           <tr>
-              <td>1</td>
-              <td>2020/06/30</td>
-              <td>テスト</td>
-              <td></td>
+              <td>{{ $data->id }}</td>
+              <td>{{ $data->updated_at }}</td>
+              <td>{{ $data->title }}</td>
+              <td>{{ $data->content }}</td>
           </tr>
+          @endforeach
       </table>
   </div>
 </div>

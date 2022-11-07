@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Data;
 
 class DataController extends Controller
 {
@@ -12,6 +13,10 @@ class DataController extends Controller
     
     public function showList()
     {
-        return view('wlcome');
+        $datas = Data::all();
+
+    
+
+        return view('data.list',['datas' => $datas]);
     }
 }
