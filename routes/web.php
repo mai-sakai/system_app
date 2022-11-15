@@ -15,6 +15,11 @@
 Route::get('/', 'DataController@showList')->name
 ('datas');
 
+
+//詳細画面の表示
+Route::get('/data/{id}', 'DataController@showDetail')->name
+('show');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
