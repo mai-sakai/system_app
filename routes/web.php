@@ -15,6 +15,13 @@
 Route::get('/', 'DataController@showList')->name
 ('datas');
 
+//登録画面の表示
+Route::get('/data/create', 'DataController@showCreate')->name
+('create');
+
+//登録
+Route::post('/data/store', 'DataController@exeStore')->name
+('store');
 
 //詳細画面の表示
 Route::get('/data/{id}', 'DataController@showDetail')->name
