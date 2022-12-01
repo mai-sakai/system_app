@@ -13,7 +13,6 @@
               <th>記事番号</th>
               <th>タイトル</th>
               <th>日付</th>
-              
               <th></th>
           </tr>
           @foreach($datas as $data)
@@ -21,6 +20,7 @@
               <td>{{ $data->id }}</td>
               <td><a href="data/{{ $data->id }}">{{ $data->title }}</a></td>
               <td>{{ $data->updated_at }}</td>
+              <td><button type="button" class="btn btn-primary" onclick="location. href='data/edit/{{ $data->id }}'">編集</button></td>
              
           </tr>
           @endforeach

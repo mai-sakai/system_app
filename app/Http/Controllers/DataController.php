@@ -65,4 +65,48 @@ class DataController extends Controller
         \Session::flash('err_msg', 'ブログを登録しました');
         return redirect(route('datas'));
     }
+
+     // *編集フォームを表示する
+    //*@param int $id
+    //*@return view
+    
+    public function showEdit($id)
+    {
+        $data = Data::find($id);
+
+        if (is_null($data->id)) {
+            \Session::flash('err_msg', 'データがありません。');
+            return redirect(route('datas'));
+        }
+
+        return view('data.edit',['data' => $data]);
+    }
+
+     // *更新する
+    //*
+    //*@return view
+    public function exeUpdate(BlogRequest $request) 
+    {
+        //ブログのデータを受け取る
+        $inputs = $request->all();
+
+
+        \DB::beginTransaction();
+        try {
+            //ブログを更新
+            $data = Data::find($inputs ['id'] );
+            $data->fill([
+                'title' => $inputs['title'],
+                'content' => $inputs['content'],
+            ]);
+            $data->save();
+            \DB::commit();
+        } catch(\Throwble $e) {
+            \DB::rollback();
+            abort(500);
+        }
+
+        \Session::flash('err_msg', 'ブログを更新しました');
+        return redirect(route('datas'));
+    }
 }

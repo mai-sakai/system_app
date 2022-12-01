@@ -27,6 +27,13 @@ Route::post('/data/store', 'DataController@exeStore')->name
 Route::get('/data/{id}', 'DataController@showDetail')->name
 ('show');
 
+//編集画面の表示
+Route::get('/data/edit/{id}', 'DataController@showEdit')->name
+('edit');
+
+Route::post('/data/update', 'DataController@exeUpdate')->name
+('update');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
