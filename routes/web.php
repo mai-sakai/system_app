@@ -34,6 +34,10 @@ Route::get('/data/edit/{id}', 'DataController@showEdit')->name
 Route::post('/data/update', 'DataController@exeUpdate')->name
 ('update');
 
+//削除
+Route::post('/data/delete/{id}', 'DataController@exeDelete')->name
+('delete');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

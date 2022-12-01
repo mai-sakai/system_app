@@ -109,4 +109,28 @@ class DataController extends Controller
         \Session::flash('err_msg', 'ブログを更新しました');
         return redirect(route('datas'));
     }
+      //削除
+    //*@param int $id
+    //*@return view
+    
+    public function exeDelete($id)
+    {
+        if (empty($id)) {
+            \Session::flash('err_msg', 'データがありません。');
+            return redirect(route('datas'));
+        }
+
+        try {
+            //ブログを削除
+            Data::destroy($id);
+        } catch(\Throwble $e) {
+            \DB::rollback();
+            abort(500);
+        }
+       
+
+        \Session::flash('err_msg', '削除しました。');
+        return redirect(route('datas'));
+    }
+
 }
